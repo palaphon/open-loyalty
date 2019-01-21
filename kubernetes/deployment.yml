@@ -5,7 +5,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: db
-  namespace: openloyalty
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -40,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: db
-  namespace: openloyalty
+  namespace: default
   labels:
     app: db
 spec:
@@ -57,7 +57,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: web
-  namespace: openloyalty
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -91,7 +91,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web
-  namespace: openloyalty
+  namespace: default
   labels:
     app: web
 spec:
@@ -100,8 +100,6 @@ spec:
   - name: http
     port: 8081
     targetPort: 80
-  externalIPs:
-  - {KUBERNETES_IP_OR_HOST_ADDRESS}
   selector:
     app: web
 ---
@@ -109,7 +107,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-admin
-  namespace: openloyalty
+  namespace: default
   labels:
     app: web-admin
 spec:
@@ -118,8 +116,6 @@ spec:
   - name: http
     port: 3001
     targetPort: 3001
-  externalIPs:
-    - {KUBERNETES_IP_OR_HOST_ADDRESS}
   selector:
     app: web
 ---
@@ -127,7 +123,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-client
-  namespace: openloyalty
+  namespace: default
   labels:
     app: web-client
 spec:
@@ -136,8 +132,6 @@ spec:
   - name: http
     port: 3002
     targetPort: 3002
-  externalIPs:
-    - {KUBERNETES_IP_OR_HOST_ADDRESS}
   selector:
     app: web
 ---
@@ -145,7 +139,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-pos
-  namespace: openloyalty
+  namespace: default
   labels:
     app: web-pos
 spec:
@@ -154,8 +148,6 @@ spec:
   - name: http
     port: 3003
     targetPort: 3003
-  externalIPs:
-    - {KUBERNETES_IP_OR_HOST_ADDRESS}
   selector:
     app: web
 ---
@@ -168,7 +160,7 @@ metadata:
   labels:
     app: php
   name: php
-  namespace: openloyalty
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -221,7 +213,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: php
-  namespace: openloyalty
+  namespace: default
   labels:
     app: php
 spec:
@@ -239,7 +231,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: elasticsearch
-  namespace: openloyalty
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -289,7 +281,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: elk
-  namespace: openloyalty
+  namespace: default
   labels:
     app: elasticsearch
 spec:
@@ -309,7 +301,7 @@ metadata:
   labels:
     app: mail
   name: mail
-  namespace: openloyalty
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -330,7 +322,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mail
-  namespace: openloyalty
+  namespace: default
   labels:
     app: mail
 spec:

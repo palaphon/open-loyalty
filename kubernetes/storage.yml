@@ -1,75 +1,86 @@
-kind: PersistentVolume
+---
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: database-volume
-  namespace: openloyalty
+  name: open-loyalty-database-pv0
+  namespace: default
   labels:
-      storage-tier: database
+    storage-tier: database
 spec:
   capacity:
     storage: 20Gi
+  nfs:
+    server: 10.146.10.241
+    path: "/nfsshared/openloyalty/database"
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/openloyalty/db"
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: elasticsearch-volume
-  namespace: openloyalty
+  name: open-loyalty-elasticsearch-pv0
+  namespace: default
   labels:
-      storage-tier: elasticsearch
+    storage-tier: elasticsearch
 spec:
   capacity:
     storage: 25Gi
+  nfs:
+    server: 10.146.10.241
+    path: "/nfsshared/openloyalty/elasticsearch"
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/openloyalty/elasticsearch"
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: cache-volume
-  namespace: openloyalty
+  name: open-loyalty-cache-pv0
+  namespace: default
   labels:
-      storage-tier: cache
+    storage-tier: cache
 spec:
   capacity:
     storage: 5Gi
+  nfs:
+    server: 10.146.10.241
+    path: "/nfsshared/openloyalty/cache"
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/openloyalty/cache"
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: logs-volume
-  namespace: openloyalty
+  name: open-loyalty-logs-pv0
+  namespace: default
   labels:
-      storage-tier: logs
+    storage-tier: logs
 spec:
   capacity:
     storage: 5Gi
+  nfs:
+    server: 10.146.10.241
+    path: "/nfsshared/openloyalty/logs"
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/openloyalty/logs"
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: jwt-volume
-  namespace: openloyalty
+  name: open-loyalty-jwt-pv0
+  namespace: default
   labels:
-      storage-tier: jwt
+    storage-tier: jwt
 spec:
   capacity:
     storage: 5Gi
+  nfs:
+    server: 10.146.10.241
+    path: "/nfsshared/openloyalty/jwt"
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/openloyalty/jwt"
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
 ---

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: front
-  namespace: openloyalty
+  namespace: default
 data:
   config.js: |-
           const config = {
