@@ -75,7 +75,18 @@ spec:
         - containerPort: 3001
         - containerPort: 3002
         - containerPort: 3003
+        volumeMounts:
+          - mountPath: /var/www/openloyalty/front/config.js
+            name: config
+            subPath: config.js
       restartPolicy: Always
+      volumes:
+        - name: config
+          configMap:
+            name: front
+            items:
+              - key: config.js
+                path: config.js
 ---
 apiVersion: v1
 kind: Service
