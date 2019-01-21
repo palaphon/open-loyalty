@@ -74,6 +74,9 @@ spec:
         name: openloyalty-web
         ports:
         - containerPort: 80
+        - containerPort: 3001
+        - containerPort: 3002
+        - containerPort: 3003
         volumeMounts:
           - mountPath: /var/www/openloyalty/front/config.js
             name: config
